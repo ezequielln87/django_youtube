@@ -7,7 +7,7 @@ from rest_framework.viewsets import ModelViewSet
 from django.shortcuts import get_object_or_404
 
 from cliente.serializers import ClienteSerializer
-
+from django.contrib.auth.models import User
 from cliente.models import Cliente
 
 class ClientesAPIv2ViewSet(ModelViewSet):
@@ -64,7 +64,6 @@ class ClientesAPIv2ViewSet(ModelViewSet):
             serializer.data,
         )
     
-    
 @api_view(["GET"])
 def apiOverview(request):
     api_urls = {
@@ -75,7 +74,7 @@ def apiOverview(request):
         "Delete": "/cliente-delete/<str:pk>/",
     }
     return Response(api_urls)
-    
+
 
 @api_view(["GET"])
 def clienteList(request):
